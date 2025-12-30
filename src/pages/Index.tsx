@@ -1,13 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HeroSection from "@/components/HeroSection";
+import ParallaxTitle from "@/components/ParallaxTitle";
+import TimelineSection from "@/components/TimelineSection";
+import ProjectsSection from "@/components/ProjectsSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen bg-background overflow-x-hidden">
+      <HeroSection />
+      
+      <ParallaxTitle direction="left" speed={300}>
+        CRÉATIVITÉ • INNOVATION • DESIGN •
+      </ParallaxTitle>
+
+      <TimelineSection />
+
+      <ParallaxTitle direction="right" speed={250}>
+        CODE • PASSION • EXCELLENCE •
+      </ParallaxTitle>
+
+      <ProjectsSection />
+
+      <ParallaxTitle direction="left" speed={200}>
+        COLLABORATION • VISION • IMPACT •
+      </ParallaxTitle>
+
+      <Footer />
+    </main>
   );
 };
 

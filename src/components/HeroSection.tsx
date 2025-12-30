@@ -40,11 +40,11 @@ const HeroSection = () => {
                 transition={{ delay: 0.4 }}
                 className="inline-block text-primary font-medium tracking-widest uppercase text-sm"
               >
-                Développeur Créatif
+                Développeuse Créative
               </motion.span>
               <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-none">
                 <span className="block">Bonjour,</span>
-                <span className="block text-gradient">je suis Alex</span>
+                <span className="block text-gradient">je suis Emma</span>
               </h1>
             </div>
             <p className="text-muted-foreground text-lg md:text-xl max-w-md leading-relaxed">

@@ -10,19 +10,19 @@ const Index = () => {
       <HeroSection />
       
       <ParallaxTitle direction="left" speed={300}>
-        CRÉATIVITÉ • INNOVATION • DESIGN •
+        CRÉATIVITÉ • ÉLÉGANCE • DESIGN •
       </ParallaxTitle>
 
       <TimelineSection />
 
       <ParallaxTitle direction="right" speed={250}>
-        CODE • PASSION • EXCELLENCE •
+        CODE • PASSION • BEAUTÉ •
       </ParallaxTitle>
 
       <ProjectsSection />
 
       <ParallaxTitle direction="left" speed={200}>
-        COLLABORATION • VISION • IMPACT •
+        INSPIRATION • VISION • HARMONIE •
       </ParallaxTitle>
 
       <Footer />

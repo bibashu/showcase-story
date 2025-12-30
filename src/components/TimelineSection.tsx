@@ -11,25 +11,25 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     year: "2024",
-    title: "Lead Développeur",
+    title: "Lead Développeuse",
     company: "Startup Innovante",
     description: "Direction technique et création de produits digitaux innovants.",
   },
   {
     year: "2022",
-    title: "Développeur Senior",
+    title: "Développeuse Senior",
     company: "Agence Créative",
     description: "Développement d'applications web et mobiles pour des clients premium.",
   },
   {
     year: "2020",
-    title: "Développeur Full-Stack",
+    title: "Développeuse Full-Stack",
     company: "Tech Company",
     description: "Conception et développement de solutions sur mesure.",
   },
   {
     year: "2018",
-    title: "Développeur Junior",
+    title: "Développeuse Junior",
     company: "Studio Digital",
     description: "Premiers pas dans le développement web professionnel.",
   },

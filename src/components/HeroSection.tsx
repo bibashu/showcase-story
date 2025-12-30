@@ -95,7 +95,7 @@ const HeroSection = () => {
                 <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 rounded-3xl transform rotate-3" />
                 <div className="absolute -inset-2 bg-gradient-to-tl from-primary/10 via-transparent to-primary/20 rounded-2xl transform -rotate-2" />
                 
-                <div className="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden glow-effect">
+                <div className="relative w-80 h-96 md:w-96 md:h-[28rem] lg:w-[26rem] lg:h-[32rem] rounded-2xl overflow-hidden glow-effect">
                   <img
                     src={profileImage}
                     alt="Photo de profil d'Emma"

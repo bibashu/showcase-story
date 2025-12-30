@@ -4,6 +4,7 @@ import ParallaxTitle from "@/components/ParallaxTitle";
 import TimelineSection from "@/components/TimelineSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TechStackSection from "@/components/TechStackSection";
+import CertificationsSection from "@/components/CertificationsSection";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 
@@ -36,6 +37,12 @@ const Index = () => {
         <ProjectsSection />
 
         <ParallaxTitle direction="right" speed={180}>
+          CERTIFICATIONS • EXPERTISE • EXCELLENCE •
+        </ParallaxTitle>
+
+        <CertificationsSection />
+
+        <ParallaxTitle direction="left" speed={160}>
           INSPIRATION • VISION • HARMONIE •
         </ParallaxTitle>
 

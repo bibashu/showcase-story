@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import ParallaxTitle from "@/components/ParallaxTitle";
 import TimelineSection from "@/components/TimelineSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import TechStackSection from "@/components/TechStackSection";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 
@@ -20,15 +21,21 @@ const Index = () => {
           CRÉATIVITÉ • ÉLÉGANCE • DESIGN •
         </ParallaxTitle>
 
-        <TimelineSection />
+        <TechStackSection />
 
         <ParallaxTitle direction="right" speed={250}>
           CODE • PASSION • BEAUTÉ •
         </ParallaxTitle>
 
-        <ProjectsSection />
+        <TimelineSection />
 
         <ParallaxTitle direction="left" speed={200}>
+          PROJETS • RÉALISATIONS • SUCCÈS •
+        </ParallaxTitle>
+
+        <ProjectsSection />
+
+        <ParallaxTitle direction="right" speed={180}>
           INSPIRATION • VISION • HARMONIE •
         </ParallaxTitle>
 

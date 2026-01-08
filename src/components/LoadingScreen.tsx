@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -7,6 +7,18 @@ interface LoadingScreenProps {
 
 const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [progress, setProgress] = useState(0);
+  const [displayedName, setDisplayedName] = useState("");
+  const fullName = "Emma";
+
+  // Typing effect for the name
+  useEffect(() => {
+    if (displayedName.length < fullName.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedName(fullName.slice(0, displayedName.length + 1));
+      }, 150);
+      return () => clearTimeout(timeout);
+    }
+  }, [displayedName]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,7 +77,12 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
               >
-                Emma
+                {displayedName}
+                <motion.span
+                  className="inline-block w-1 h-12 md:h-16 bg-primary ml-1"
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                />
               </motion.h1>
             </motion.div>
 

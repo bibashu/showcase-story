@@ -1,9 +1,24 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import profileImage from "@/assets/profile.jpg";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [displayedName, setDisplayedName] = useState("");
+  const fullName = "Emma";
+
+  // Typing effect for the name
+  useEffect(() => {
+    const startDelay = setTimeout(() => {
+      if (displayedName.length < fullName.length) {
+        const timeout = setTimeout(() => {
+          setDisplayedName(fullName.slice(0, displayedName.length + 1));
+        }, 150);
+        return () => clearTimeout(timeout);
+      }
+    }, 600); // Delay before starting to type
+    return () => clearTimeout(startDelay);
+  }, [displayedName]);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -148,12 +163,17 @@ const HeroSection = () => {
               >
                 <span className="block mb-2">Bonjour, je suis</span>
                 <span className="block text-gradient relative">
-                  Emma
+                  {displayedName}
                   <motion.span
-                    className="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 rounded-full"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: 0.8, duration: 0.6 }}
+                    className="inline-block w-1 h-12 md:h-16 lg:h-20 bg-primary ml-1 align-middle"
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                  />
+                  <motion.span
+                    className="absolute -bottom-2 left-0 h-1 bg-primary/30 rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: displayedName.length === fullName.length ? "100%" : "0%" }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
                   />
                 </span>
               </motion.h1>

@@ -4,52 +4,52 @@
 
 @layer base {
   :root {
-    --background: 340 20% 4%;
-    --foreground: 340 20% 96%;
+    --background: 340 30% 97%;
+    --foreground: 340 20% 18%;
 
-    --card: 340 15% 8%;
-    --card-foreground: 340 20% 96%;
+    --card: 340 25% 100%;
+    --card-foreground: 340 20% 18%;
 
-    --popover: 340 15% 8%;
-    --popover-foreground: 340 20% 96%;
+    --popover: 340 25% 100%;
+    --popover-foreground: 340 20% 18%;
 
-    --primary: 340 70% 65%;
-    --primary-foreground: 340 20% 4%;
+    --primary: 340 65% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 340 15% 12%;
-    --secondary-foreground: 340 20% 96%;
+    --secondary: 340 20% 94%;
+    --secondary-foreground: 340 20% 22%;
 
-    --muted: 340 15% 15%;
-    --muted-foreground: 340 15% 55%;
+    --muted: 340 15% 92%;
+    --muted-foreground: 340 10% 45%;
 
-    --accent: 340 70% 65%;
-    --accent-foreground: 340 20% 4%;
+    --accent: 340 65% 58%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 340 15% 18%;
-    --input: 340 15% 18%;
-    --ring: 340 70% 65%;
+    --border: 340 20% 88%;
+    --input: 340 20% 88%;
+    --ring: 340 65% 58%;
 
     --radius: 0.75rem;
 
-    /* Custom design tokens - Rose Gold Feminine */
-    --gradient-rose: linear-gradient(135deg, hsl(340 70% 65%), hsl(320 60% 55%));
-    --gradient-blush: linear-gradient(135deg, hsl(340 70% 65%), hsl(20 70% 70%));
-    --gradient-dark: linear-gradient(180deg, hsl(340 20% 4%), hsl(340 15% 8%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(340 70% 65% / 0.15), transparent 70%);
+    /* Custom design tokens - Rose Gold Feminine Light */
+    --gradient-rose: linear-gradient(135deg, hsl(340 65% 58%), hsl(320 55% 52%));
+    --gradient-blush: linear-gradient(135deg, hsl(340 65% 58%), hsl(20 70% 65%));
+    --gradient-dark: linear-gradient(180deg, hsl(340 30% 97%), hsl(340 25% 94%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(340 65% 58% / 0.12), transparent 70%);
     
-    --shadow-glow: 0 0 60px hsl(340 70% 65% / 0.25);
-    --shadow-soft: 0 20px 60px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 60px hsl(340 65% 58% / 0.18);
+    --shadow-soft: 0 20px 60px hsl(340 20% 30% / 0.12);
     
     --font-display: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
   }
 
   .dark {
-    --background: 340 20% 4%;
-    --foreground: 340 20% 96%;
+    --background: 340 30% 97%;
+    --foreground: 340 20% 18%;
   }
 }
 

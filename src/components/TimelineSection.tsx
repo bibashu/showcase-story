@@ -1,6 +1,11 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, Rocket, Code, GraduationCap, Calendar, MapPin, ArrowUpRight } from "lucide-react";
+import { Briefcase, Code, GraduationCap, Calendar, MapPin, ArrowUpRight, Building2, Layers } from "lucide-react";
+
+interface Project {
+  name: string;
+  details: string[];
+}
 
 interface TimelineItem {
   year: string;
@@ -8,7 +13,8 @@ interface TimelineItem {
   title: string;
   company: string;
   location: string;
-  description: string;
+  type: string;
+  projects: Project[];
   skills: string[];
   icon: React.ElementType;
   color: string;
@@ -16,47 +22,110 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    year: "2024",
-    title: "Lead Développeuse",
-    company: "Startup Innovante",
-    location: "Paris, France",
-    description: "Direction technique et création de produits digitaux innovants. Management d'une équipe de 5 développeurs.",
-    skills: ["Leadership", "Architecture", "React", "Node.js"],
-    icon: Rocket,
+    year: "Octobre 2025",
+    endYear: "Aujourd'hui",
+    title: "Développeuse Full-Stack",
+    company: "WATERLEAF (BTP)",
+    location: "Sénégal",
+    type: "CDI",
+    projects: [
+      {
+        name: "Application de suivi de chantier (Génie Civil)",
+        details: [
+          "Développement et maintenance de l'application de suivi de chantier",
+          "Conception et intégration de l'interface utilisateur avec React JS",
+          "Intégration des API du backend NestJS",
+          "Suivi des avancements des chantiers en temps réel",
+          "Gestion des avancements de chaque projet (photos, vidéos des chantiers)",
+          "Gestion de la sécurité",
+        ],
+      },
+      {
+        name: "Application de suivi de forage (IoT)",
+        details: [
+          "Développement de l'interface utilisateur de la plateforme",
+          "Intégration des API des données capteurs en temps réel avec WebSockets",
+          "Gestion de la sécurité",
+          "Gestion des profils et sécurité de l'espace utilisateurs",
+        ],
+      },
+      {
+        name: "Application de scraping d'appels d'offre",
+        details: [
+          "Développement de l'interface de l'application",
+          "Gestion des utilisateurs",
+          "Gestion des annonces pertinentes",
+          "Gestion des sources",
+        ],
+      },
+    ],
+    skills: ["React JS", "NestJS", "WebSockets", "IoT", "Sécurité", "API REST", "Gestion de projet"],
+    icon: Briefcase,
     color: "from-rose-500 to-pink-600",
   },
   {
-    year: "2022",
-    endYear: "2024",
-    title: "Développeuse Senior",
-    company: "Agence Créative",
-    location: "Lyon, France",
-    description: "Développement d'applications web et mobiles pour des clients premium. Conception d'interfaces innovantes.",
-    skills: ["React Native", "TypeScript", "AWS", "GraphQL"],
+    year: "Février 2025",
+    endYear: "Septembre 2025",
+    title: "Développeuse Frontend",
+    company: "ZION TERANGA",
+    location: "Sénégal",
+    type: "CDI",
+    projects: [
+      {
+        name: "Plateforme Marketplace multi-boutique",
+        details: [
+          "Développement et maintenance de la plateforme",
+          "Conception et implémentation de l'interface avec Next.js",
+          "Pages, composants réutilisables, navigation dynamique",
+          "Intégration et consommation des API backend (produits, commandes, paiements)",
+          "Gestion des utilisateurs (clients, vendeurs, administrateurs)",
+          "Collaboration avec les développeurs backend",
+          "Tests et optimisations",
+          "Sécurité des routes",
+        ],
+      },
+      {
+        name: "Plateforme de financement participatif",
+        details: [
+          "Développement et maintenance de la plateforme (dons, investissements)",
+          "Gestion des cotisations et des investissements",
+          "Gestion des relations entre investisseurs et porteurs de projet",
+        ],
+      },
+    ],
+    skills: ["Next.js", "React", "API REST", "Paiements", "Sécurité", "UI/UX", "Collaboration"],
     icon: Code,
     color: "from-violet-500 to-purple-600",
   },
   {
-    year: "2020",
-    endYear: "2022",
-    title: "Développeuse Full-Stack",
-    company: "Tech Company",
-    location: "Bordeaux, France",
-    description: "Conception et développement de solutions sur mesure. Optimisation des performances et de l'expérience utilisateur.",
-    skills: ["Vue.js", "Python", "PostgreSQL", "Docker"],
-    icon: Briefcase,
-    color: "from-cyan-500 to-blue-600",
-  },
-  {
-    year: "2018",
-    endYear: "2020",
-    title: "Développeuse Junior",
-    company: "Studio Digital",
-    location: "Toulouse, France",
-    description: "Premiers pas dans le développement web professionnel. Formation continue et montée en compétences rapide.",
-    skills: ["HTML/CSS", "JavaScript", "PHP", "MySQL"],
+    year: "Octobre 2024",
+    endYear: "Janvier 2025",
+    title: "Stagiaire Développeuse Frontend",
+    company: "ZION TERANGA",
+    location: "Sénégal",
+    type: "Stage",
+    projects: [
+      {
+        name: "Plateforme de suivi et évaluation de projets",
+        details: [
+          "Développement d'une plateforme web (React JS) dédiée au suivi et à l'évaluation des projets et programmes financés par des ressources extérieures au Sénégal",
+          "Conception et développement d'interfaces utilisateur ergonomiques et réactives",
+          "Intégration des maquettes UI/UX en respectant les standards du web",
+          "Implémentation de la validation et de la gestion des formulaires",
+          "Collaboration avec les designers, développeurs backend et chefs de projet",
+        ],
+      },
+      {
+        name: "Application mobile (Prototype Figma)",
+        details: [
+          "Création du prototype de l'application mobile de la plateforme",
+          "Design réalisé avec Figma",
+        ],
+      },
+    ],
+    skills: ["React JS", "UI/UX", "Figma", "Formulaires", "Intégration maquettes", "Travail d'équipe"],
     icon: GraduationCap,
-    color: "from-emerald-500 to-teal-600",
+    color: "from-cyan-500 to-blue-600",
   },
 ];
 
@@ -94,10 +163,10 @@ const TimelineSection = () => {
             Mon Parcours
           </motion.span>
           <h2 className="section-title">
-            Une Histoire de <span className="text-gradient">Passion</span>
+            Expériences & <span className="text-gradient">Projets</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mt-6 text-lg">
-            Chaque étape de mon parcours m'a permis de développer mes compétences et ma vision du développement web.
+            Mon parcours professionnel et les projets concrets sur lesquels j'ai eu l'opportunité de travailler.
           </p>
         </motion.div>
 
@@ -115,7 +184,7 @@ const TimelineSection = () => {
 
           <div className="space-y-12 md:space-y-24">
             {timelineData.map((item, index) => (
-              <TimelineCard key={item.year} item={item} index={index} />
+              <TimelineCard key={`${item.year}-${item.company}`} item={item} index={index} />
             ))}
           </div>
         </div>
@@ -129,9 +198,9 @@ const TimelineSection = () => {
           className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { value: "6+", label: "Années d'expérience" },
-            { value: "50+", label: "Projets réalisés" },
-            { value: "30+", label: "Clients satisfaits" },
+            { value: "2+", label: "Années d'expérience" },
+            { value: "6+", label: "Projets réalisés" },
+            { value: "2", label: "Entreprises" },
             { value: "15+", label: "Technologies maîtrisées" },
           ].map((stat, i) => (
             <motion.div
@@ -171,7 +240,7 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
       {/* Content */}
       <div className={`flex-1 ${isLeft ? "md:text-right" : "md:text-left"}`}>
         <motion.div
-          whileHover={{ scale: 1.02, y: -5 }}
+          whileHover={{ scale: 1.01, y: -5 }}
           transition={{ type: "spring", stiffness: 300 }}
           className="relative bg-card p-6 md:p-8 rounded-2xl border border-border hover:border-primary/50 transition-all duration-300 group overflow-hidden"
         >
@@ -188,32 +257,53 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
             >
               <Calendar className="w-4 h-4 text-white" />
               <span className="text-sm font-bold text-white">
-                {item.year}{item.endYear ? ` - ${item.endYear}` : " - Présent"}
+                {item.year} - {item.endYear || "Présent"}
               </span>
             </motion.div>
           </div>
 
           {/* Title & Company */}
-          <h3 className="text-2xl font-display font-bold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
+          <h3 className="text-2xl font-display font-bold text-foreground group-hover:text-primary transition-colors flex items-center gap-2 flex-wrap">
             {item.title}
             <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
           </h3>
           
           <div className={`flex items-center gap-4 mt-2 text-sm ${isLeft ? "md:justify-end" : "md:justify-start"} flex-wrap`}>
-            <span className="text-primary font-semibold">{item.company}</span>
+            <span className="flex items-center gap-1 text-primary font-semibold">
+              <Building2 className="w-4 h-4" />
+              {item.company}
+            </span>
             <span className="flex items-center gap-1 text-muted-foreground">
               <MapPin className="w-3 h-3" />
               {item.location}
             </span>
+            <span className="text-xs px-2 py-0.5 bg-secondary rounded-full text-muted-foreground">
+              {item.type}
+            </span>
           </div>
 
-          {/* Description */}
-          <p className="text-muted-foreground mt-4 leading-relaxed">
-            {item.description}
-          </p>
+          {/* Projects */}
+          <div className="mt-6 space-y-4">
+            {item.projects.map((project, pIndex) => (
+              <div key={project.name} className="border-l-2 border-primary/20 pl-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Layers className="w-4 h-4 text-primary" />
+                  <h4 className="font-semibold text-foreground">{project.name}</h4>
+                </div>
+                <ul className={`space-y-1.5 ${isLeft ? "md:text-right" : "md:text-left"}`}>
+                  {project.details.map((detail, dIndex) => (
+                    <li key={dIndex} className="text-sm text-muted-foreground leading-relaxed flex items-start gap-2">
+                      <span className="w-1 h-1 rounded-full bg-primary/60 mt-2 flex-shrink-0" />
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
 
           {/* Skills */}
-          <div className={`flex flex-wrap gap-2 mt-5 ${isLeft ? "md:justify-end" : "md:justify-start"}`}>
+          <div className={`flex flex-wrap gap-2 mt-6 ${isLeft ? "md:justify-end" : "md:justify-start"}`}>
             {item.skills.map((skill, i) => (
               <motion.span
                 key={skill}

@@ -31,6 +31,12 @@ const Index = () => {
 
         <TimelineSection />
 
+        <ParallaxTitle direction="right" speed={220}>
+          FORMATION • APPRENTISSAGE • CROISSANCE •
+        </ParallaxTitle>
+
+        <FormationSection />
+
         <ParallaxTitle direction="left" speed={200}>
           PROJETS • RÉALISATIONS • SUCCÈS •
         </ParallaxTitle>

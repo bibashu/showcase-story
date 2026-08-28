@@ -2,6 +2,7 @@ import { useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import ParallaxTitle from "@/components/ParallaxTitle";
 import TimelineSection from "@/components/TimelineSection";
+import FormationSection from "@/components/FormationSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TechStackSection from "@/components/TechStackSection";
 import CertificationsSection from "@/components/CertificationsSection";
@@ -29,6 +30,12 @@ const Index = () => {
         </ParallaxTitle>
 
         <TimelineSection />
+
+        <ParallaxTitle direction="right" speed={220}>
+          FORMATION • APPRENTISSAGE • CROISSANCE •
+        </ParallaxTitle>
+
+        <FormationSection />
 
         <ParallaxTitle direction="left" speed={200}>
           PROJETS • RÉALISATIONS • SUCCÈS •

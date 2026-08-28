@@ -2,6 +2,7 @@ import { useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import ParallaxTitle from "@/components/ParallaxTitle";
 import TimelineSection from "@/components/TimelineSection";
+import FormationSection from "@/components/FormationSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TechStackSection from "@/components/TechStackSection";
 import CertificationsSection from "@/components/CertificationsSection";

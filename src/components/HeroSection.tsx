@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { Laptop, Code, Terminal, Cpu, ChevronRight, Mail } from "lucide-react";
 import emmaProfileAsset from "@/assets/emma-profile.jpg.asset.json";
 
 const AnimatedCounter = ({ value, suffix = "", delay = 0 }: { value: number; suffix?: string; delay?: number }) => {
@@ -32,6 +33,37 @@ const AnimatedCounter = ({ value, suffix = "", delay = 0 }: { value: number; suf
   return <>{count}{suffix}</>;
 };
 
+const FloatingTechElement = ({
+  children,
+  className = "",
+  delay = 0,
+  duration = 4,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  duration?: number;
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay, duration: 0.6 }}
+    className={`absolute ${className}`}
+  >
+    <motion.div
+      animate={{ y: [0, -12, 0], rotate: [0, 1, 0] }}
+      transition={{
+        duration,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: delay * 0.3,
+      }}
+    >
+      {children}
+    </motion.div>
+  </motion.div>
+);
+
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [displayedName, setDisplayedName] = useState("");
@@ -55,163 +87,236 @@ const HeroSection = () => {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const leftX = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
-  const rightX = useTransform(scrollYProgress, [0, 0.5], [0, 80]);
+  const leftX = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
+  const rightX = useTransform(scrollYProgress, [0, 0.5], [0, 60]);
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background"
     >
-      {/* Split background */}
-      <div className="absolute inset-0 flex">
-        <div className="w-full lg:w-1/2 bg-background" />
-        <div className="hidden lg:block w-1/2 bg-primary/5" />
-      </div>
-
-      {/* Diagonal separator */}
-      <div className="hidden lg:block absolute inset-0 z-[1]">
-        <svg className="h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-          <polygon fill="hsl(var(--primary) / 0.05)" points="45,0 55,0 50,100 40,100" />
+      {/* Decorative tech background grid */}
+      <div className="absolute top-0 right-0 w-1/3 h-full opacity-[0.06] pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <pattern id="hero-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hero-grid)" />
         </svg>
       </div>
 
-      <motion.div style={{ opacity }} className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center min-h-screen py-20">
-          {/* Left - Text */}
+      {/* Soft gradient glow */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
+
+      <motion.div
+        style={{ opacity }}
+        className="container mx-auto px-6 lg:px-12 py-20 relative z-10"
+      >
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 min-h-[calc(100vh-10rem)]">
+          {/* Left content column */}
           <motion.div
             style={{ x: leftX }}
-            className="flex-1 space-y-8 text-center lg:text-left lg:pr-16 order-2 lg:order-1"
+            className="flex-1 z-10 text-center lg:text-left order-2 lg:order-1"
           >
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.7 }}
-              className="space-y-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="space-y-8"
             >
-              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-5 py-2 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm text-muted-foreground tracking-wide">
-                  Disponible pour de nouveaux projets
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-secondary tracking-widest uppercase">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                </span>
+                <span className="text-xs font-bold text-primary">
+                  Fullstack Developer • Sénégal
                 </span>
               </div>
 
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9]">
-                <span className="block mb-2 text-muted-foreground/80">Bonjour, je suis</span>
-                <span className="block text-gradient relative">
-                  {displayedName}
+              <div className="space-y-2">
+                <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.9] text-foreground">
                   <motion.span
-                    className="inline-block w-1 h-12 md:h-16 lg:h-20 bg-primary ml-1 align-middle"
-                    animate={{ opacity: [1, 0] }}
-                    transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-                  />
-                </span>
-              </h1>
-
-              <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-lg mx-auto lg:mx-0">
-                <span className="text-primary font-medium">Développeuse créative</span> passionnée
-                par le design et les expériences digitales uniques.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              <a
-                href="#projets"
-                className="group relative inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium overflow-hidden transition-transform hover:scale-105"
-              >
-                <span className="relative z-10">Découvrir mes projets</span>
-                <motion.span
-                  className="relative z-10"
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 border border-border bg-secondary/30 backdrop-blur-sm px-8 py-4 rounded-full font-medium hover:bg-secondary/50 transition-all hover:border-primary/50"
-              >
-                Me contacter
-              </a>
-            </motion.div>
-
-            {/* Animated stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 }}
-              className="flex gap-10 justify-center lg:justify-start pt-6"
-            >
-              {[
-                { value: 5, suffix: "+", label: "Années d'exp." },
-                { value: 30, suffix: "+", label: "Projets" },
-              ].map((stat, i) => (
-                <div key={i} className="relative">
-                  <div className="text-4xl md:text-5xl font-display font-bold text-primary">
-                    <AnimatedCounter value={stat.value} suffix={stat.suffix} delay={1200 + i * 300} />
-                  </div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">{stat.label}</div>
-                  {i === 0 && (
-                    <div className="absolute -right-5 top-1/2 -translate-y-1/2 w-px h-10 bg-border" />
-                  )}
-                </div>
-              ))}
-              <div>
-                <div className="text-4xl md:text-5xl font-display font-bold text-primary">∞</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">Passion</div>
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="block italic text-accent mb-2"
+                  >
+                    {displayedName.split(" ")[0] || "A"}
+                  </motion.span>
+                  <span className="relative inline-block">
+                    {displayedName.split(" ").slice(1).join(" ") || ""}
+                    <motion.span
+                      className="inline-block w-1 h-12 md:h-16 lg:h-20 bg-primary ml-1 align-middle"
+                      animate={{ opacity: [1, 0] }}
+                      transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                    />
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ delay: 1.5, duration: 0.8 }}
+                      className="absolute -bottom-2 right-0 w-24 h-1.5 bg-primary origin-left"
+                    />
+                  </span>
+                </h1>
               </div>
+
+              <p className="text-lg md:text-xl text-muted-foreground max-w-md mx-auto lg:mx-0 leading-relaxed font-light">
+                Architecte de solutions numériques mêlant{" "}
+                <span className="text-accent font-semibold">performance technique</span> et{" "}
+                <span className="text-primary font-semibold">élégance visuelle</span>.
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                <motion.a
+                  href="#projets"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold shadow-lg shadow-primary/25 transition-all"
+                >
+                  <span>Démarrer un projet</span>
+                  <motion.span
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </motion.span>
+                </motion.a>
+
+                <motion.a
+                  href="#contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center gap-2 border border-border bg-card/80 backdrop-blur-sm text-card-foreground px-8 py-4 rounded-full font-semibold hover:border-primary/50 hover:bg-card transition-all"
+                >
+                  <Mail className="w-4 h-4" />
+                  Me contacter
+                </motion.a>
+
+                <div className="hidden md:flex -space-x-2">
+                  {["JS", "PY", "TS"].map((lang, i) => (
+                    <motion.div
+                      key={lang}
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.8 + i * 0.1 }}
+                      whileHover={{ scale: 1.15, zIndex: 10 }}
+                      className="w-11 h-11 rounded-full bg-muted border-2 border-background flex items-center justify-center text-[10px] font-bold text-muted-foreground cursor-default"
+                    >
+                      {lang}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Animated stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 }}
+                className="grid grid-cols-2 gap-8 max-w-sm mx-auto lg:mx-0 pt-8 border-t border-border"
+              >
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl md:text-4xl font-display font-bold text-foreground">
+                    <AnimatedCounter value={5} suffix="+" delay={1200} />
+                  </div>
+                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground font-bold mt-1">
+                    Années d'expertise
+                  </div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl md:text-4xl font-display font-bold text-foreground">
+                    <AnimatedCounter value={30} suffix="+" delay={1500} />
+                  </div>
+                  <div className="text-[10px] uppercase tracking-tighter text-muted-foreground font-bold mt-1">
+                    Projets livrés
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           </motion.div>
 
-          {/* Right - Image */}
+          {/* Right image column */}
           <motion.div
             style={{ x: rightX }}
-            className="flex-1 flex justify-center order-1 lg:order-2 mb-12 lg:mb-0"
+            className="flex-1 relative flex justify-center lg:justify-end items-center order-1 lg:order-2"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85, x: 60 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
-              className="relative"
-            >
-              {/* Decorative line frame */}
-              <div className="absolute -inset-6 border border-primary/15 rounded-[2rem] transform rotate-3" />
-              <div className="absolute -inset-3 border border-primary/10 rounded-[1.5rem] transform -rotate-1" />
+            {/* Floating git commit card */}
+            <FloatingTechElement className="top-4 -left-4 lg:left-8 z-30" delay={1.2} duration={5}>
+              <div className="bg-card/90 backdrop-blur-xl border border-border p-4 rounded-2xl shadow-soft flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                <code className="text-xs font-mono text-muted-foreground">
+                  git commit -m &quot;feat: magic&quot;
+                </code>
+              </div>
+            </FloatingTechElement>
 
-              <div className="relative w-72 h-[22rem] md:w-80 md:h-[26rem] lg:w-[24rem] lg:h-[30rem] rounded-[50%] overflow-hidden">
+            {/* Current stack card */}
+            <FloatingTechElement className="bottom-24 -right-4 lg:-right-8 z-30" delay={1.4} duration={6}>
+              <div className="bg-accent text-accent-foreground p-5 rounded-2xl shadow-soft transform rotate-3">
+                <div className="text-[10px] font-bold uppercase opacity-80 mb-1">Current Stack</div>
+                <div className="text-sm font-bold flex items-center gap-2">
+                  <Laptop className="w-4 h-4" />
+                  Next.js / Tailwind / Node
+                </div>
+              </div>
+            </FloatingTechElement>
+
+            {/* Floating code icon */}
+            <FloatingTechElement className="-top-2 right-8 lg:right-0 z-30" delay={1.6} duration={4.5}>
+              <div className="w-16 h-16 rounded-2xl bg-card shadow-lg border border-border flex items-center justify-center transform rotate-12 hover:rotate-0 transition-transform duration-500">
+                <Code className="w-8 h-8 text-primary" />
+              </div>
+            </FloatingTechElement>
+
+            {/* Floating terminal icon */}
+            <FloatingTechElement className="bottom-8 left-0 lg:-left-4 z-20" delay={1.8} duration={5.5}>
+              <div className="w-12 h-12 rounded-full bg-secondary/80 border border-secondary flex items-center justify-center">
+                <Terminal className="w-5 h-5 text-accent" />
+              </div>
+            </FloatingTechElement>
+
+            {/* Floating CPU icon */}
+            <FloatingTechElement className="top-1/3 -right-2 lg:-right-12 z-20" delay={2} duration={4}>
+              <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                <Cpu className="w-5 h-5 text-primary" />
+              </div>
+            </FloatingTechElement>
+
+            {/* Profile composition */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85, rotate: -5 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
+              className="relative w-72 lg:w-96 aspect-[3/4]"
+            >
+              {/* Dual decorative borders */}
+              <motion.div
+                animate={{ rotate: [6, 3, 6] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 rounded-full border-[12px] border-secondary translate-x-6 translate-y-6"
+              />
+              <motion.div
+                animate={{ rotate: [-3, -1, -3] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 rounded-full border-2 border-accent -translate-x-4 -translate-y-4"
+              />
+
+              {/* Main image container */}
+              <div className="relative w-full h-full rounded-full overflow-hidden bg-muted border-4 border-background shadow-soft">
                 <img
                   src={emmaProfileAsset.url}
                   alt="Photo de profil d'Aby Ndiaye"
                   className="w-full h-full object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
-              {/* Floating badge */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 }}
-                className="absolute -right-6 top-1/4 bg-card/90 backdrop-blur-sm border border-border px-4 py-2 rounded-full shadow-lg"
-              >
-                <span className="text-sm text-primary font-medium">✨ Créative</span>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.2 }}
-                className="absolute -left-6 bottom-1/4 bg-card/90 backdrop-blur-sm border border-border px-4 py-2 rounded-full shadow-lg"
-              >
-                <span className="text-sm text-primary font-medium">🎨 Design</span>
-              </motion.div>
+              {/* Soft glow behind photo */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/10 to-accent/10 blur-xl -z-10 scale-110" />
             </motion.div>
           </motion.div>
         </div>
@@ -221,7 +326,7 @@ const HeroSection = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 2.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.div

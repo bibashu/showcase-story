@@ -24,7 +24,7 @@ const ParallaxTitle = ({ children, direction = "left", speed = 200 }: ParallaxTi
     <div ref={ref} className="overflow-hidden py-8">
       <motion.h2
         style={{ x }}
-        className="parallax-title text-foreground whitespace-nowrap"
+        className="parallax-title text-primary/[0.12] whitespace-nowrap select-none"
       >
         {children}
       </motion.h2>

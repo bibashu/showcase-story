@@ -4,52 +4,52 @@
 
 @layer base {
   :root {
-    --background: 340 30% 97%;
-    --foreground: 340 20% 18%;
+    --background: 20 45% 97%;
+    --foreground: 340 25% 18%;
 
-    --card: 340 25% 100%;
-    --card-foreground: 340 20% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 340 25% 18%;
 
-    --popover: 340 25% 100%;
-    --popover-foreground: 340 20% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 340 25% 18%;
 
-    --primary: 340 65% 58%;
+    --primary: 340 82% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 340 20% 94%;
-    --secondary-foreground: 340 20% 22%;
+    --secondary: 15 70% 95%;
+    --secondary-foreground: 340 25% 22%;
 
-    --muted: 340 15% 92%;
-    --muted-foreground: 340 10% 45%;
+    --muted: 15 30% 92%;
+    --muted-foreground: 340 12% 42%;
 
-    --accent: 340 65% 58%;
+    --accent: 28 75% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 340 20% 88%;
-    --input: 340 20% 88%;
-    --ring: 340 65% 58%;
+    --border: 15 40% 88%;
+    --input: 15 40% 88%;
+    --ring: 340 82% 52%;
 
     --radius: 0.75rem;
 
-    /* Custom design tokens - Rose Gold Feminine Light */
-    --gradient-rose: linear-gradient(135deg, hsl(340 65% 58%), hsl(320 55% 52%));
-    --gradient-blush: linear-gradient(135deg, hsl(340 65% 58%), hsl(20 70% 65%));
-    --gradient-dark: linear-gradient(180deg, hsl(340 30% 97%), hsl(340 25% 94%));
-    --gradient-glow: radial-gradient(ellipse at center, hsl(340 65% 58% / 0.12), transparent 70%);
-    
-    --shadow-glow: 0 0 60px hsl(340 65% 58% / 0.18);
+    /* Custom design tokens - Fuchsia & Peach inspired by profile photo */
+    --gradient-rose: linear-gradient(135deg, hsl(340 82% 52%), hsl(15 85% 72%));
+    --gradient-blush: linear-gradient(135deg, hsl(340 82% 52%), hsl(28 75% 55%));
+    --gradient-dark: linear-gradient(180deg, hsl(20 45% 97%), hsl(15 50% 93%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(340 82% 52% / 0.12), transparent 70%);
+
+    --shadow-glow: 0 0 60px hsl(340 82% 52% / 0.2);
     --shadow-soft: 0 20px 60px hsl(340 20% 30% / 0.12);
-    
+
     --font-display: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
   }
 
   .dark {
-    --background: 340 30% 97%;
-    --foreground: 340 20% 18%;
+    --background: 20 45% 97%;
+    --foreground: 340 25% 18%;
   }
 }
 
@@ -118,10 +118,10 @@
 
   @keyframes pulse-glow {
     0%, 100% {
-      box-shadow: 0 0 20px hsl(340 70% 65% / 0.3);
+      box-shadow: 0 0 20px hsl(340 82% 52% / 0.35);
     }
     50% {
-      box-shadow: 0 0 50px hsl(340 70% 65% / 0.5);
+      box-shadow: 0 0 50px hsl(340 82% 52% / 0.55);
     }
   }
 }

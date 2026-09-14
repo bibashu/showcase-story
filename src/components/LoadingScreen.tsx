@@ -8,7 +8,7 @@ interface LoadingScreenProps {
 const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [progress, setProgress] = useState(0);
   const [displayedName, setDisplayedName] = useState("");
-  const fullName = "Emma";
+  const fullName = "Aby Ndiaye";
 
   // Typing effect for the name
   useEffect(() => {

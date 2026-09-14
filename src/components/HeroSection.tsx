@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import profileImage from "@/assets/profile.jpg";
+import emmaProfileAsset from "@/assets/emma-profile.jpg.asset.json";
 
 const AnimatedCounter = ({ value, suffix = "", delay = 0 }: { value: number; suffix?: string; delay?: number }) => {
   const [count, setCount] = useState(0);
@@ -187,9 +187,9 @@ const HeroSection = () => {
 
               <div className="relative w-72 h-[22rem] md:w-80 md:h-[26rem] lg:w-[24rem] lg:h-[30rem] rounded-[50%] overflow-hidden">
                 <img
-                  src={profileImage}
+                  src={emmaProfileAsset.url}
                   alt="Photo de profil d'Emma"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
               </div>

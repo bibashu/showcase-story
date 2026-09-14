@@ -35,7 +35,7 @@ const AnimatedCounter = ({ value, suffix = "", delay = 0 }: { value: number; suf
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [displayedName, setDisplayedName] = useState("");
-  const fullName = "Emma";
+  const fullName = "Aby Ndiaye";
 
   useEffect(() => {
     const startDelay = setTimeout(() => {
@@ -188,7 +188,7 @@ const HeroSection = () => {
               <div className="relative w-72 h-[22rem] md:w-80 md:h-[26rem] lg:w-[24rem] lg:h-[30rem] rounded-[50%] overflow-hidden">
                 <img
                   src={emmaProfileAsset.url}
-                  alt="Photo de profil d'Emma"
+                  alt="Photo de profil d'Aby Ndiaye"
                   className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />

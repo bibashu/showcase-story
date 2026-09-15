@@ -70,16 +70,23 @@ const HeroSection = () => {
   const fullName = "Aby Ndiaye";
 
   useEffect(() => {
+    let characterIndex = 0;
+    let typingInterval: ReturnType<typeof setInterval> | undefined;
     const startDelay = setTimeout(() => {
-      if (displayedName.length < fullName.length) {
-        const timeout = setTimeout(() => {
-          setDisplayedName(fullName.slice(0, displayedName.length + 1));
-        }, 150);
-        return () => clearTimeout(timeout);
-      }
-    }, 600);
-    return () => clearTimeout(startDelay);
-  }, [displayedName]);
+      typingInterval = setInterval(() => {
+        characterIndex += 1;
+        setDisplayedName(fullName.slice(0, characterIndex));
+        if (characterIndex >= fullName.length && typingInterval) {
+          clearInterval(typingInterval);
+        }
+      }, 120);
+    }, 450);
+
+    return () => {
+      clearTimeout(startDelay);
+      if (typingInterval) clearInterval(typingInterval);
+    };
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -247,7 +254,7 @@ const HeroSection = () => {
             {/* Floating git commit card */}
             <FloatingTechElement className="top-4 -left-4 lg:left-8 z-30" delay={1.2} duration={5}>
               <div className="bg-card/90 backdrop-blur-xl border border-border p-4 rounded-2xl shadow-soft flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                <div className="w-2 h-2 rounded-full bg-primary" />
                 <code className="text-xs font-mono text-muted-foreground">
                   git commit -m &quot;feat: magic&quot;
                 </code>

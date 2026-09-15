@@ -23,13 +23,13 @@ const Footer = () => {
               Vous avez un projet en tête ? Discutons-en et créons quelque chose d'extraordinaire.
             </p>
             <motion.a
-              href="mailto:contact@example.com"
+              href="mailto:aby19ndiaye@gmail.com"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 mt-6 bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium"
             >
               <Mail className="w-5 h-5" />
-              contact@example.com
+              aby19ndiaye@gmail.com
             </motion.a>
           </motion.div>
 
@@ -41,8 +41,8 @@ const Footer = () => {
             className="flex gap-4 md:justify-end"
           >
             {[
-              { icon: Github, href: "#", label: "GitHub" },
-              { icon: Linkedin, href: "#", label: "LinkedIn" },
+              { icon: Github, href: "https://github.com/bibashu", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/aby-ndiaye-903104244/", label: "LinkedIn" },
             ].map((social) => (
               <motion.a
                 key={social.label}

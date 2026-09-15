@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Laptop, Code, Terminal, Cpu, ChevronRight, Mail } from "lucide-react";
+import { Laptop, Code, Terminal, Cpu, ChevronRight, Mail, Github, Linkedin } from "lucide-react";
 import emmaProfileAsset from "@/assets/emma-profile.jpg.asset.json";
 
 const AnimatedCounter = ({ value, suffix = "", delay = 0 }: { value: number; suffix?: string; delay?: number }) => {
@@ -194,7 +194,7 @@ const HeroSection = () => {
                 </motion.a>
 
                 <motion.a
-                  href="#contact"
+                  href="mailto:aby19ndiaye@gmail.com"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                   className="inline-flex items-center gap-2 border border-border bg-card/80 backdrop-blur-sm text-card-foreground px-8 py-4 rounded-full font-semibold hover:border-primary/50 hover:bg-card transition-all"
@@ -218,6 +218,32 @@ const HeroSection = () => {
                   ))}
                 </div>
               </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1 }}
+                className="flex items-center justify-center lg:justify-start gap-3"
+              >
+                {[
+                  { icon: Github, href: "https://github.com/bibashu", label: "GitHub" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/aby-ndiaye-903104244/", label: "LinkedIn" },
+                ].map((social) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-secondary text-sm font-medium text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="w-4 h-4" />
+                    {social.label}
+                  </motion.a>
+                ))}
+              </motion.div>
 
               {/* Animated stats */}
               <motion.div

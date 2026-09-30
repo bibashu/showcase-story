@@ -20,49 +20,74 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Premium",
-    description: "Plateforme de vente en ligne avec une expérience utilisateur immersive et un design moderne.",
-    tags: ["React", "Node.js", "Stripe"],
-    images: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
-      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80",
-    ],
-  },
-  {
-    id: 2,
-    title: "Application Mobile",
-    description: "Application de gestion de tâches avec synchronisation temps réel et mode hors-ligne.",
-    tags: ["React Native", "Firebase", "TypeScript"],
+    title: "API Covoiturage",
+    description: "API REST de covoiturage : trajets, réservations, véhicules, paiements, avis, messagerie temps réel et notifications (push et WhatsApp).",
+    tags: ["NestJS", "PostgreSQL", "Redis", "Socket.io", "Docker"],
     images: [
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
       "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80",
       "https://images.unsplash.com/photo-1526498460520-4c246339dccb?w=800&q=80",
     ],
+    github: "https://github.com/bibashu/api-covoiturage",
   },
   {
-    id: 3,
-    title: "Dashboard Analytics",
-    description: "Interface de visualisation de données avec graphiques interactifs et rapports dynamiques.",
-    tags: ["Vue.js", "D3.js", "Python"],
-    images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
-      "https://images.unsplash.com/photo-1543286386-713bdd548da4?w=800&q=80",
-    ],
-  },
-  {
-    id: 4,
-    title: "Site Corporate",
-    description: "Site vitrine moderne avec animations soignées et optimisation SEO avancée.",
-    tags: ["Next.js", "Framer Motion", "Tailwind"],
+    id: 2,
+    title: "ArtisanHub",
+    description: "Annuaire d'artisans : recherche d'artisans qualifiés près de chez soi, fiches détaillées avec créations en vidéo et audio, ajout d'annonces.",
+    tags: ["React", "TypeScript", "Tailwind", "shadcn/ui"],
     images: [
       "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
       "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
       "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
     ],
+    github: "https://github.com/bibashu/artisan-front",
+  },
+  {
+    id: 3,
+    title: "ProdManager",
+    description: "Application full-stack de gestion de produits : authentification JWT, catalogue, ajout et modification de produits avec upload d'images.",
+    tags: ["React", "Express", "PostgreSQL", "HeroUI"],
+    images: [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80",
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    ],
+    github: "https://github.com/bibashu/ProdManager",
+  },
+  {
+    id: 4,
+    title: "Tontine App",
+    description: "Gestion de tontines : tableau de bord, création de tontines, gestion des membres et des groupes, suivi des paiements.",
+    tags: ["JavaScript", "Firebase", "HTML/CSS"],
+    images: [
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      "https://images.unsplash.com/photo-1543286386-713bdd548da4?w=800&q=80",
+    ],
+    github: "https://github.com/bibashu/tontine_app",
+  },
+  {
+    id: 5,
+    title: "API E-commerce",
+    description: "Backend e-commerce : inscription et connexion sécurisées, gestion des produits, des partenaires et de la messagerie.",
+    tags: ["Node.js", "Express", "MongoDB", "JWT"],
+    images: [
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    ],
+    github: "https://github.com/bibashu/Ecommerce-react-nodeJS",
+  },
+  {
+    id: 6,
+    title: "Projet Coach",
+    description: "Application de coaching : inscription, connexion et tableau de suivi de progression, avec données stockées sur Firebase.",
+    tags: ["React", "Firebase", "React Router"],
+    images: [
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    ],
+    github: "https://github.com/bibashu/projet_coach",
   },
 ];
 
@@ -146,6 +171,17 @@ const ProjectsSection = () => {
                       {currentImageIndex + 1} / {selectedProject.images.length}
                     </p>
                   </div>
+                  {selectedProject.github && (
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mr-12 inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
+                    >
+                      <Github className="w-4 h-4" />
+                      Voir le code
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -317,6 +353,18 @@ const ProjectCard = ({
               </span>
             ))}
           </div>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              <Github className="w-4 h-4" />
+              Voir sur GitHub
+            </a>
+          )}
         </div>
       </motion.div>
     </motion.div>

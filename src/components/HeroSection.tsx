@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Laptop, Code, Terminal, Cpu, ChevronRight, Mail, Github, Linkedin } from "lucide-react";
-import profileImage from "@/assets/profile.jpg";
+import profileImage from "@/assets/aby-profile.jpg";
 
 const AnimatedCounter = ({ value, suffix = "", delay = 0 }: { value: number; suffix?: string; delay?: number }) => {
   const [count, setCount] = useState(0);

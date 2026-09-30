@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Laptop, Code, Terminal, Cpu, ChevronRight, Mail, Github, Linkedin } from "lucide-react";
-import emmaProfileAsset from "@/assets/emma-profile.jpg.asset.json";
+import profileImage from "@/assets/profile.jpg";
 
 const AnimatedCounter = ({ value, suffix = "", delay = 0 }: { value: number; suffix?: string; delay?: number }) => {
   const [count, setCount] = useState(0);
@@ -341,7 +341,7 @@ const HeroSection = () => {
               {/* Main image container */}
               <div className="relative w-full h-full rounded-full overflow-hidden bg-muted border-4 border-background shadow-soft">
                 <img
-                  src={emmaProfileAsset.url}
+                  src={profileImage}
                   alt="Photo de profil d'Aby Ndiaye"
                   className="w-full h-full object-cover object-top"
                 />
